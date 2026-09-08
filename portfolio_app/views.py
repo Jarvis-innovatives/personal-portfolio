@@ -6,6 +6,27 @@ from .models import AboutMe, BlogPost, Certificate, Skill, Project, ContactMessa
 
 def home_view(request):
     about_me = AboutMe.objects.first()
+    if about_me:
+        changed = False
+        if not about_me.title or "{{" in about_me.title:
+            about_me.title = "About Me"
+            changed = True
+        if not about_me.kicker or "{{" in about_me.kicker:
+            about_me.kicker = "~ Chapter I ~"
+            changed = True
+        if changed:
+            about_me.save()
+    else:
+        about_me = AboutMe.objects.create(
+            kicker="~ Chapter I ~",
+            title="About Me",
+            paragraph_1="My name is Jarvis Lameck Magira, an aspiring technology professional and digital innovator currently pursuing my studies at the Dar es Salaam Institute of Technology (DIT). I am passionate about information technology, networking, software development, and creating innovative digital solutions that address real-world challenges.",
+            paragraph_2="Throughout my academic and professional journey, I have gained valuable experience providing IT support and solving technical issues at the Tanzania Communications Regulatory Authority (TCRA), TRA, and other organizations — strengthening my skills in troubleshooting, network administration, and system support.",
+            paragraph_3="As a Cisco Certified Network Associate (CCNA), I have a strong foundation in computer networking, network security, and infrastructure management. I am also a mobile application developer dedicated to building solutions that improve efficiency, accessibility, and user experience.",
+            paragraph_4="I am the creator of CoverPage — a digital platform that helps students generate professional academic cover pages quickly and easily. My vision is to keep innovating, advance cybersecurity awareness, and contribute to the growth of the technology sector in Tanzania and beyond.",
+            quote="“I believe technology has the power to transform lives.”"
+        )
+
     skills = Skill.objects.all()
     certificates = Certificate.objects.all()
     projects = Project.objects.all()
@@ -19,6 +40,7 @@ def home_view(request):
         'recent_posts': recent_posts,
     }
     return render(request, 'index.html', context)
+
 
 
 def blog_list_view(request):
