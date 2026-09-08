@@ -7,10 +7,10 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY', 'django-insecure-jarvis-lameck-portfolio-secret-key-change-in-prod'
 )
 
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get(
-    'ALLOWED_HOSTS', '.onrender.com,localhost,127.0.0.1'
+    'ALLOWED_HOSTS', '.onrender.com,localhost,127.0.0.1,*'
 ).split(',')
 CSRF_TRUSTED_ORIGINS = os.environ.get(
     'CSRF_TRUSTED_ORIGINS', 'https://*.onrender.com'
@@ -97,8 +97,11 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
     'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage' if not DEBUG else 'django.contrib.staticfiles.storage.StaticFilesStorage',
     },
 }
 

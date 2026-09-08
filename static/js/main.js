@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     blogGrid.innerHTML = posts
       .map(
         (post) => `
-      <article class="group flex flex-col rounded-md overflow-hidden border border-[var(--color-gilded)]/40 bg-white/70 hover:shadow-xl transition duration-500">
+      <article class="group flex flex-col rounded-md overflow-hidden border border-[var(--color-gilded)]/40 bg-[var(--color-parchment-deep)] hover:shadow-xl transition duration-500">
         <div class="overflow-hidden h-52 relative">
           <img src="${post.img}" alt="${post.title}" loading="lazy" class="h-full w-full object-cover group-hover:scale-110 transition duration-700" />
           <span class="absolute top-3 left-3 rounded-full bg-[var(--color-burgundy)] px-3 py-1 text-xs font-serif text-[var(--color-parchment)] shadow">
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="mb-6">
           <h3 class="font-display text-2xl font-bold text-[var(--color-burgundy)] mb-3">${t.topic}</h3>
           ${(t.subtopics || []).map(s => `
-            <div class="mb-4 bg-white/70 p-4 rounded border border-[var(--color-gilded)]/30">
+            <div class="mb-4 bg-[var(--color-parchment-deep)] p-4 rounded border border-[var(--color-gilded)]/30">
               <h4 class="font-display text-lg font-bold text-[var(--color-ink)] mb-1">✦ ${s.title}</h4>
               <p class="font-serif text-base text-stone-800 leading-relaxed">${s.explanation || s.text || ''}</p>
             </div>
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="mb-6">
               <h3 class="font-display text-2xl font-bold text-[var(--color-burgundy)] mb-3">${block.topic}</h3>
               ${block.subtopics.map(s => `
-                <div class="mb-4 bg-white/70 p-4 rounded border border-[var(--color-gilded)]/30">
+                <div class="mb-4 bg-[var(--color-parchment-deep)] p-4 rounded border border-[var(--color-gilded)]/30">
                   <h4 class="font-display text-lg font-bold text-[var(--color-ink)] mb-1">✦ ${s.title}</h4>
                   <p class="font-serif text-base text-stone-800 leading-relaxed">${s.explanation || s.text || ''}</p>
                 </div>

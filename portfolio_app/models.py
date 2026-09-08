@@ -30,7 +30,10 @@ class AboutMe(models.Model):
     @property
     def get_image_url(self):
         if self.image_file:
-            return self.image_file.url
+            try:
+                return self.image_file.url
+            except Exception:
+                pass
         if self.image:
             if self.image.startswith('/') or self.image.startswith('http'):
                 return self.image
@@ -72,7 +75,10 @@ class BlogPost(models.Model):
     @property
     def get_image_url(self):
         if self.image_file:
-            return self.image_file.url
+            try:
+                return self.image_file.url
+            except Exception:
+                pass
         if self.featured_image:
             if self.featured_image.startswith('/') or self.featured_image.startswith('http'):
                 return self.featured_image
@@ -101,7 +107,10 @@ class Certificate(models.Model):
     @property
     def get_image_url(self):
         if self.image_file:
-            return self.image_file.url
+            try:
+                return self.image_file.url
+            except Exception:
+                pass
         if self.image:
             if self.image.startswith('/') or self.image.startswith('http'):
                 return self.image
@@ -127,7 +136,10 @@ class Skill(models.Model):
     @property
     def get_image_url(self):
         if self.image_file:
-            return self.image_file.url
+            try:
+                return self.image_file.url
+            except Exception:
+                pass
         if self.image:
             if self.image.startswith('/') or self.image.startswith('http'):
                 return self.image
@@ -150,7 +162,10 @@ class Project(models.Model):
     @property
     def get_image_url(self):
         if self.image_file:
-            return self.image_file.url
+            try:
+                return self.image_file.url
+            except Exception:
+                pass
         if self.image:
             if self.image.startswith('/') or self.image.startswith('http'):
                 return self.image

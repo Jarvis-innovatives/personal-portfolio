@@ -101,7 +101,7 @@
       </a>
       {% endif %}
 
-      <div class="rounded-md border border-[var(--color-gilded)]/40 bg-white/70 p-6 shadow-sm flex flex-col justify-between">
+      <div class="rounded-md border border-[var(--color-gilded)]/40 bg-[var(--color-parchment-deep)] p-6 shadow-sm flex flex-col justify-between">
         <div>
           <p class="font-serif text-xs uppercase tracking-wider font-bold text-stone-600">Explore Journal</p>
           <p class="font-display mt-2 text-xl font-bold text-[var(--color-ink)]">Discover more tech articles</p>
@@ -186,7 +186,7 @@
           if (Array.isArray(topicObj.subtopics)) {
             topicObj.subtopics.forEach(sub => {
               html += `
-                <div class="mb-6 bg-white/85 p-6 rounded-md border border-[var(--color-gilded)]/40 shadow-sm">
+                <div class="mb-6 bg-[var(--color-parchment-deep)] p-6 rounded-md border border-[var(--color-gilded)]/40 shadow-sm">
                   <h3 class="font-display text-xl font-bold text-[var(--color-burgundy)] mb-2">✦ ${sub.title || 'Overview'}</h3>
                   <p class="font-serif text-lg leading-relaxed text-stone-800">${sub.explanation || sub.text || ''}</p>
                 </div>
@@ -210,7 +210,7 @@
             } else if (block.type === 'paragraph') {
               html += `<p class="mb-5 text-stone-850 text-lg leading-relaxed">${block.text}</p>`;
             } else if (block.type === 'quote') {
-              html += `<blockquote class="rounded-md border-l-4 border-[var(--color-gilded)] bg-white/90 p-5 italic text-stone-900 my-6 shadow-sm">“${block.text}”</blockquote>`;
+              html += `<blockquote class="rounded-md border-l-4 border-[var(--color-gilded)] bg-[var(--color-parchment-deep)] p-5 italic text-stone-900 my-6 shadow-sm">“${block.text}”</blockquote>`;
             } else if (block.type === 'list' && Array.isArray(block.items)) {
               html += `
                 <div class="my-5">
@@ -255,7 +255,7 @@
               } else if (block.type === 'paragraph') {
                 html += `<p class="mb-5 text-stone-850 text-lg leading-relaxed">${block.text}</p>`;
               } else if (block.type === 'quote') {
-                html += `<blockquote class="rounded-md border-l-4 border-[var(--color-gilded)] bg-white/90 p-5 italic text-stone-900 my-6 shadow-sm">“${block.text}”</blockquote>`;
+                html += `<blockquote class="rounded-md border-l-4 border-[var(--color-gilded)] bg-[var(--color-parchment-deep)] p-5 italic text-stone-900 my-6 shadow-sm">“${block.text}”</blockquote>`;
               } else if (block.type === 'list' && Array.isArray(block.items)) {
                 html += `
                   <div class="my-5">

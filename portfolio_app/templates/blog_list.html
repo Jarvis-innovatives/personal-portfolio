@@ -20,7 +20,7 @@
     </div>
 
     <!-- Filter, Search & Sort Control Bar -->
-    <div class="mb-12 rounded-lg border border-[var(--color-gilded)]/40 bg-white/60 p-6 shadow-sm space-y-6">
+    <div class="mb-12 rounded-lg border border-[var(--color-gilded)]/40 bg-[var(--color-parchment-deep)] p-6 shadow-sm space-y-6">
       
       <!-- Category Tag Filter Buttons -->
       <div>
@@ -41,7 +41,7 @@
         </div>
         <div class="flex items-center gap-2">
           <label for="blog-sort" class="font-serif text-stone-600 text-sm font-semibold whitespace-nowrap">Sort by:</label>
-          <select id="blog-sort" class="w-full rounded-full border border-[var(--color-gilded)]/50 bg-white px-4 py-2.5 font-serif text-stone-800 focus:outline-none focus:border-[var(--color-burgundy)]">
+          <select id="blog-sort" class="w-full rounded-full border border-[var(--color-gilded)]/50 bg-[var(--color-parchment-deep)] px-4 py-2.5 font-serif text-stone-800 focus:outline-none focus:border-[var(--color-burgundy)]">
             <option value="latest" {% if selected_sort == 'latest' %}selected{% endif %}>Latest First</option>
             <option value="oldest" {% if selected_sort == 'oldest' %}selected{% endif %}>Oldest First</option>
             <option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title (A-Z)</option>
@@ -54,7 +54,7 @@
     <!-- Dynamic Blog Grid -->
     <div id="blog-posts-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {% for post in posts %}
-      <article class="group flex flex-col rounded-md overflow-hidden border border-[var(--color-gilded)]/40 bg-white/70 hover:shadow-xl transition duration-500">
+      <article class="group flex flex-col rounded-md overflow-hidden border border-[var(--color-gilded)]/40 bg-[var(--color-parchment-deep)] hover:shadow-xl transition duration-500">
         <div class="overflow-hidden h-52 relative">
           <img src="{{ post.get_image_url }}" alt="{{ post.title }}" loading="lazy" class="h-full w-full object-cover group-hover:scale-110 transition duration-700" />
           <span class="absolute top-3 left-3 rounded-full bg-[var(--color-burgundy)] px-3 py-1 text-xs font-serif text-[var(--color-parchment)] shadow">
