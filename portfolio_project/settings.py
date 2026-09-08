@@ -57,12 +57,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
-if os.environ.get('DATABASE_URL'):
+db_url = os.environ.get('DATABASE_URL', '').strip()
+if db_url:
     import dj_database_url
-
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, conn_health_checks=True),
-    }
+    try:
+        parsed_db = dj_database_url.config(default=db_url, conn_max_age=600, conn_health_checks=True)
+        if parsed_db:
+            DATABASES = {'default': parsed_db}
+        else:
+            raise ValueError("Parsed database dictionary is empty.")
+    except Exception as err:
+        print(f"Warning: Failed to parse DATABASE_URL ({err}). Falling back to SQLite.")
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 else:
     DATABASES = {
         'default': {
